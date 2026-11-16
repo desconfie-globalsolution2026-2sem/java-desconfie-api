@@ -1,0 +1,12 @@
+# Sobe a API Desconfie localmente com Docker.
+# Uso: copie .env.example para .env, preencha os valores e rode: docker compose up --build
+# O banco é o Oracle da FIAP (remoto), por isso não há serviço de banco aqui.
+services:
+  desconfie-api:
+    build: .
+    container_name: desconfie-api
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    restart: unless-stopped
