@@ -7,5 +7,9 @@ package br.com.fiap.desconfie.enums;
  * MARCA: nome de marca imitado em links falsos. DOMINIO_OFICIAL: site verdadeiro de uma empresa.
  */
 public enum TipoPadrao {
-    TEXTO, TLD, ENCURTADOR, MARCA, DOMINIO_OFICIAL
+    TEXTO,
+    TLD,
+    ENCURTADOR,
+    MARCA,
+    DOMINIO_OFICIAL
 }

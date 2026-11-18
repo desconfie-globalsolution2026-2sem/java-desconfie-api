@@ -1,23 +1,35 @@
 -- =====================================================================
--- DESCONFIE · Global Solution 2026/2 · FIAP 1TDSPJ
--- Script de criação das tabelas e sequences (RASCUNHO v1, 12/11/2026)
--- Ordem: sequences, tabelas na ordem das chaves estrangeiras, comentários.
--- O mesmo schema atende Building Relational Database e a API Java.
+-- DESCONFIE · Global Solution 2026/2 · CitizenTech
+-- Disciplina: Building Relational Database · FIAP · Turma 1TDSPJ
+-- Integrantes: Juan Souza Marques (RM 573469), Lucas Leite Carlos (RM 571985),
+--              Matheus Matsushita de Souza (RM 570017), Pedro Amaro Pires (RM 570636)
+-- Data: 17/11/2026
+-- Objetivo: criar as sequences e as 7 tabelas com PK, FK, NOT NULL,
+--           UNIQUE e CHECK, e um comentário em cada tabela. O mesmo
+--           schema atende Building Relational Database e a API Java.
+-- Ordem de execução: 01_ddl.sql -> 02_inserts.sql -> 03_consultas.sql
+--           (dentro deste arquivo: sequences, tabelas na ordem das
+--           chaves estrangeiras, comentários)
 -- =====================================================================
 
--- Para recriar do zero, descomente os DROPs (ordem inversa das FKs):
--- DROP TABLE tb_dsf_alerta CASCADE CONSTRAINTS;
--- DROP TABLE tb_dsf_analise_padrao CASCADE CONSTRAINTS;
--- DROP TABLE tb_dsf_analise CASCADE CONSTRAINTS;
--- DROP TABLE tb_dsf_padrao_golpe CASCADE CONSTRAINTS;
--- DROP TABLE tb_dsf_categoria_golpe CASCADE CONSTRAINTS;
--- DROP TABLE tb_dsf_vinculo_guardiao CASCADE CONSTRAINTS;
--- DROP TABLE tb_dsf_usuario CASCADE CONSTRAINTS;
--- DROP SEQUENCE sq_tb_dsf_usuario;
--- DROP SEQUENCE sq_tb_dsf_categoria_golpe;
--- DROP SEQUENCE sq_tb_dsf_padrao_golpe;
--- DROP SEQUENCE sq_tb_dsf_analise;
--- DROP SEQUENCE sq_tb_dsf_alerta;
+-- ---------------------------------------------------------------------
+-- LIMPEZA: apaga as tabelas e sequences antigas, se existirem, para o
+-- script poder ser executado de novo sem erro (ordem não importa por
+-- causa do CASCADE CONSTRAINTS)
+-- ---------------------------------------------------------------------
+BEGIN
+    FOR t IN (SELECT table_name FROM user_tables
+               WHERE table_name IN ('TB_DSF_ALERTA', 'TB_DSF_ANALISE_PADRAO', 'TB_DSF_ANALISE',
+                                    'TB_DSF_PADRAO_GOLPE', 'TB_DSF_CATEGORIA_GOLPE',
+                                    'TB_DSF_VINCULO_GUARDIAO', 'TB_DSF_USUARIO')) LOOP
+        EXECUTE IMMEDIATE 'DROP TABLE ' || t.table_name || ' CASCADE CONSTRAINTS';
+    END LOOP;
+    FOR s IN (SELECT sequence_name FROM user_sequences
+               WHERE sequence_name LIKE 'SQ_TB_DSF_%') LOOP
+        EXECUTE IMMEDIATE 'DROP SEQUENCE ' || s.sequence_name;
+    END LOOP;
+END;
+/
 
 -- ---------------------------------------------------------------------
 -- SEQUENCES (uma por tabela de entidade; associativas usam PK composta)
