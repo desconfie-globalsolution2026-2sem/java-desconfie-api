@@ -20,8 +20,9 @@ public class IaClientConfig {
     @Bean
     public RestClient iaRestClient(@Value("${desconfie.ia.url}") String iaUrl) {
         SimpleClientHttpRequestFactory fabrica = new SimpleClientHttpRequestFactory();
-        fabrica.setConnectTimeout(Duration.ofSeconds(3));  // tempo para conseguir conectar
-        fabrica.setReadTimeout(Duration.ofSeconds(15));    // tempo para a IA responder (OCR é o mais lento)
+        // No plano gratuito do Render a API Python "dorme" e leva cerca de 50 s para acordar
+        fabrica.setConnectTimeout(Duration.ofSeconds(10)); // tempo para conseguir conectar
+        fabrica.setReadTimeout(Duration.ofSeconds(60));    // tempo para a IA responder (OCR é o mais lento)
         return RestClient.builder()
                 .baseUrl(iaUrl)
                 .requestFactory(fabrica)

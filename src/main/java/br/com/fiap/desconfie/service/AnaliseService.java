@@ -96,13 +96,14 @@ public class AnaliseService {
 
         switch (request.getTipo()) {
             case IMAGEM -> {
-                // RN07: imagem depende da IA para ler o texto (OCR); sem IA não há o que analisar
+                // RN07: imagem depende da API Python para ler o texto (OCR); sem OCR não há o que analisar.
+                // Se o OCR leu o texto e só o modelo falhou, a análise segue com as regras.
                 IaClient.RespostaImagem resposta = iaClient.analisarImagem(request.getImagemBase64())
                         .orElseThrow(() -> new IaIndisponivelException(
                                 "A análise de imagem está indisponível no momento. Cole o texto da mensagem."));
                 conteudo = resposta.textoExtraido();
                 regras = motorRegras.analisarTexto(conteudo, padroesAtivos);
-                notaIa = Optional.ofNullable(resposta.probabilidadeGolpe()).map(p -> p * 100);
+                notaIa = Optional.ofNullable(resposta.notaIa());
             }
             case LINK -> {
                 conteudo = request.getConteudo().trim();
