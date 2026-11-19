@@ -174,7 +174,7 @@ CREATE TABLE tb_dsf_alerta (
 );
 
 -- ---------------------------------------------------------------------
--- COMENTÁRIOS (exigidos pela rubrica de BD: um por tabela)
+-- COMENTÁRIOS DAS TABELAS
 -- ---------------------------------------------------------------------
 COMMENT ON TABLE tb_dsf_usuario IS 'Pessoas cadastradas no Desconfie, que enviam conteúdos para análise e podem ser guardiões ou dependentes.';
 COMMENT ON TABLE tb_dsf_vinculo_guardiao IS 'Autorrelacionamento entre usuários: cada guardião protege até 3 dependentes e cada dependente tem um único guardião; juntos formam o círculo que compartilha o histórico amarelo e vermelho.';

@@ -6,7 +6,7 @@ import java.sql.SQLException;
  * Envolve qualquer SQLException lançada pelos DAOs.
  *
  * O detalhe técnico (mensagem do Oracle) fica guardado só para o log do servidor;
- * o cliente recebe uma mensagem genérica, sem SQL, como a rubrica exige.
+ * o cliente recebe uma mensagem genérica, sem SQL.
  */
 public class BancoDeDadosException extends RuntimeException {
 

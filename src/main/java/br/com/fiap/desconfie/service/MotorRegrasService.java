@@ -25,7 +25,7 @@ public class MotorRegrasService {
 
     static final int NOTA_MAXIMA = 100;
 
-    // Pesos dos sinais de link que são regras fixas do código (ver docs/02-arquitetura.md)
+    // Pesos dos sinais de link que são regras fixas do código
     static final int PESO_IP = 30;
     static final int PESO_ARROBA = 25;
     static final int PESO_SEM_HTTPS = 10;

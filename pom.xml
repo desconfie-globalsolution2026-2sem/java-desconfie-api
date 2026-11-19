@@ -54,7 +54,7 @@
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
-		<!-- ModelMapper: converte DTO <-> model casando os campos pelo nome (exigido pela rubrica) -->
+		<!-- ModelMapper: converte DTO <-> model casando os campos pelo nome -->
 		<dependency>
 			<groupId>org.modelmapper</groupId>
 			<artifactId>modelmapper</artifactId>

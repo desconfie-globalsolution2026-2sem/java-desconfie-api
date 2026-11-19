@@ -12,7 +12,7 @@ import java.sql.SQLException;
  * Cria a fonte de conexões com o Oracle (DataSource) usada por todos os DAOs.
  *
  * Substitui o ConnectionFactory estático: o Spring guarda o DataSource criado aqui
- * e o entrega pelo construtor de cada DAO (injeção de dependência), como a rubrica pede.
+ * e o entrega pelo construtor de cada DAO (injeção de dependência).
  * Os dados de acesso vêm do application.properties, que por sua vez lê as
  * variáveis de ambiente DB_URL, DB_USER e DB_PASSWORD.
  */

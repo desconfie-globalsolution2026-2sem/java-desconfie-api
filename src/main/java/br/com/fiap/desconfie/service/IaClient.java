@@ -21,7 +21,6 @@ import java.util.Optional;
  *
  * Rede de segurança: se a IA estiver fora do ar, lenta ou com erro, cada método devolve
  * Optional vazio (ou nota vazia) e a análise segue só com as regras (iaDisponivel = false).
- * O contrato dos JSONs está em docs/05-contrato-integracao.md (Parte 2).
  */
 @Service
 public class IaClient {
