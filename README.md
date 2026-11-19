@@ -268,4 +268,4 @@ A API chama a API Python pela URL em `IA_URL`, com tempo limite de 10 s para con
 - API Python (IA): https://python-desconfie-2sem.onrender.com
 - O plano gratuito do Render desliga o serviço sem uso: o primeiro acesso pode levar cerca de 1 minuto. Abra `/health` antes de usar.
 - Repositório: https://github.com/desconfie-globalsolution2026-2sem/java-desconfie-api
-- Vídeo: _a definir_
+- Vídeo: https://youtu.be/LSyogC5SRLU
